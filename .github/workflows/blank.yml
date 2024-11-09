@@ -1,0 +1,16 @@
+name: Keep VPS Alive
+
+on:
+  workflow_dispatch: # Allows manual trigger of this workflow
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Keep alive loop
+        run: |
+          while true; do
+              # Ping the loopback address (localhost) every minute
+              ping -c 1 127.0.0.1
+              sleep 60
+          done
